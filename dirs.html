@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vuenewbies</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <style>
+    [v-kloak] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="dirs" class="container pt-5" v-cloak>
+    <div class="card center">
+      <h1 v-text="title"></h1>
+      <!-- <h1>{{ title }}</h1> -->
+      <h2 v-text="title"></h2>
+      <h2 v-once>{{title}}</h2>
+      <h2 v-pre>{{title}}</h2>
+      <button class="btn" @click="title = 'Now it is anohter name'">Change title</button>
+      <div v-html="myHTML"></div>
+    </div>
+    <div class="card center">
+      <ul class="list" v-if="items.length">
+        <!-- <li class="list-item" v-for="item in 10">{{ item }}</li> -->
+        <!-- <li class="list-item" v-for="(value, key) in person">{{ key }}: {{ value }}</li> -->
+        <li
+          class="list-item"
+          v-for="(item, i) in items"
+          @click="items.splice(i, 1)"
+        >
+          {{ item }}
+        </li>
+      </ul>
+      <p v-else>No items</p>
+    </div>
+  </div>
+  <script src="js/vue.global.js"></script>
+  <script src="js/dirs.js"></script>
+</body>
+</html>
