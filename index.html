@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vuenewbies</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+  <div id="counter" class="container pt-5">
+    <div class="card center">
+      <h2>Counter: {{ counter }}</h2>
+      <div>
+        <button class="btn primary" @click="counter++">+</button>
+        <button class="btn danger" @click="counter--">-</button>
+      </div>
+    </div>
+  </div>
+  <div id="todos" class="container">
+    <div class="card center">
+      <h2 :style="{
+          color: inputValue.length > 5 ? 'blue' : 'orange'
+        }"
+      >
+        {{ todosTitle }}
+      </h2>
+      <div class="form-control">
+        <input
+          type="text"
+          :placeholder="inputPlaceholder"
+          v-model="inputValue"
+          @keypress.Enter="addTodo"
+          :autofocus="true"
+        />
+        <br />
+        <button class="btn primary" @click="addTodo">Add</button>
+        <hr />
+        <ul class="list" v-if="todos.length">
+          <li class="list-item">Notes: {{ todosCount }}</li>
+          <li class="list-item" v-for="(todo, idx) in todos" :key="idx">
+            <!-- <span :class="todo.name.length > 5 ? 'bold' : 'primary'">{{ idx + 1 }}. {{ toUpperCase(todo.name) }}</span> -->
+            <span :class="['primary', {'bold': todo.name.length < 5}]">{{ idx + 1 }}. {{ toUpperCase(todo.name) }}</span>
+            <button class="btn danger" @click="removeTodo(idx)">Remove</button>
+          </li>
+        </ul>
+        <p v-else>No any todo at this moment...</p>
+      </div>
+    </div>
+  </div>
+  <script src="js/vue.global.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
