@@ -25,15 +25,20 @@
       <div v-html="myHTML"></div>
     </div>
     <div class="card center">
+      <div class="form-control">
+        <input type="text" ref="itemInput" @keyup.shift.enter.exact="addItem"/>
+      </div>
       <ul class="list" v-if="items.length">
         <!-- <li class="list-item" v-for="item in 10">{{ item }}</li> -->
         <!-- <li class="list-item" v-for="(value, key) in person">{{ key }}: {{ value }}</li> -->
         <li
           class="list-item"
           v-for="(item, i) in items"
-          @click="items.splice(i, 1)"
+          :key="i + item"
+          @click.right.prevent="remove(i), log(item)"
         >
-          {{ item }}
+        <strong>{{ item }}</strong>
+          <input @click.stop type="text" />
         </li>
       </ul>
       <p v-else>No items</p>
