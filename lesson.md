@@ -4,6 +4,10 @@
 
 [github repo](https://github.com/eduardsrcs/vue3minin2021/blob/master/lesson.md)
 
+## Intro
+
+Here we used locally saved vue3 script to build simple solution and see how some features work. 
+
 ## CDN
 
 ```html
